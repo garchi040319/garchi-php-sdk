@@ -1,0 +1,55 @@
+./src/main.php
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore Composer dependencies
+/vendor/
+composer.lock
+
+# Ignore IDE/editor files
+.idea/
+*.iml
+*.sublime-workspace
+.vscode/
+
+# Ignore logs and caches
+logs/
+*.log
+cache/
+*.cache
+
+# Ignore environment variables
+.env
+.env.local
+.env.*.local
+
+# Ignore PHPUnit test results
+/phpunit.xml
+/phpunit.xml.dist
+
+# Ignore build and temporary files
+/build/
+node_modules/
+dist/
+tmp/
+*.bak
+*.swp
+
+# Ignore coverage reports
+/coverage/
+/test-results/
+
+# Ignore PHPStorm metadata
+/.phpstorm.meta.php
+
+# Ignore generated documentation
+/docs/api/
+
+# Ignore backup files
+*.orig
+*.bak
+
+# Ignore user-specific config files
+*.local

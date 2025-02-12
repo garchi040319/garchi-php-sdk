@@ -1,0 +1,24 @@
+{
+    "name": "garchicms/garchi-sdk-php",
+    "description": "A PHP SDK wrapper for the Garchi CMS API",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "GarchiCMS\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aditya Kadam"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "guzzlehttp/guzzle": "^7.9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "minimum-stability": "stable"
+}
