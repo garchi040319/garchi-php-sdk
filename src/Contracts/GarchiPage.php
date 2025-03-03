@@ -11,6 +11,7 @@ class GarchiPage {
     public string $title;
     public string $slug;
     public string $description;
+    public string $image;
     /** @var GarchiSection[] */
     public array $sections;
 
@@ -19,6 +20,7 @@ class GarchiPage {
         $this->title = $data['title'] ?? '';
         $this->slug = $data['slug'] ?? '';
         $this->description = $data['description'] ?? '';
+        $this->image = $data['image'] ?? '';
         $this->sections = array_map(fn($section) => new GarchiSection($section), $data['sections'] ?? []);
     }
 }
