@@ -4,6 +4,7 @@ namespace GarchiCMS\Wrappers;
 
 use GarchiCMS\APIClient;
 use GarchiCMS\Contracts\GarchiCategory;
+use GarchiCMS\Contracts\GarchiPage;
 use GarchiCMS\Contracts\GarchiSpace;
 use GarchiCMS\Contracts\PaginatedResponse;
 use GuzzleHttp\Psr7\MultipartStream;
@@ -139,4 +140,37 @@ class Space {
 
         return $response['data'];
     }
+
+    /**
+     * List pages of a space.
+     *
+     * @param string $space_uid
+     * @return GarchiPage[]
+     */
+    public function listPages(string $space_uid): array {
+        $response = $this->client->request('GET', "/space/{$space_uid}/pages");
+
+        if (isset($response['error'])) {
+            throw new \Exception("API Error: " . $response['error']);
+        }
+
+        return array_map(fn($item) => new GarchiPage($item), $response['data'] ?? []);
+    }
+
+    /**
+     * List section templates of a space.
+     *
+     * @param string $space_uid
+     * @return array
+     */
+    public function listSectionTemplates(string $space_uid): array {
+        $response = $this->client->request('GET', "/space/{$space_uid}/section_templates");
+
+        if (isset($response['error'])) {
+            throw new \Exception("API Error: " . $response['error']);
+        }
+
+        return $response['data'] ?? [];
+    }
+    
 }

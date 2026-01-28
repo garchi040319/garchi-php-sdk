@@ -29,6 +29,8 @@ The **GarchiCMS PHP SDK** is a PHP package for interacting with the **Garchi CMS
       - [Add or Update Reaction](#add-or-update-reaction)
     - [Space API](#space-api)
       - [Create a Space](#create-a-space)
+      - [List Pages in a Space](#list-pages-in-a-space)
+      - [List Section Templates in a Space](#list-section-templates-in-a-space)
     - [Compound Query API](#compound-query-api)
       - [Perform a Compound Query](#perform-a-compound-query)
     - [Headless CMS API](#headless-cms-api)
@@ -202,6 +204,18 @@ $newSpace = $garchi->space->create([
     'name' => 'New Space',
     'logo' => $yourLogoFile
 ]);
+```
+
+#### List Pages in a Space
+
+```php
+$pages = $garchi->space->listPages('your_space_uid');
+```
+
+#### List Section Templates in a Space
+
+```php
+$sectionTemplates = $garchi->space->listSectionTemplates('your_space_uid');
 ```
 
 ### Compound Query API
