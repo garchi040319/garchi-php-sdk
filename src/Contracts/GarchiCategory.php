@@ -18,6 +18,6 @@ class GarchiCategory {
     public function __construct(array $data) {
         $this->category_id = $data['category_id'] ?? 0;
         $this->name = $data['name'] ?? '';
-        $this->description = $data['description'] ?? null;
+        $this->description = $data['description'] ?? '';
     }
 }

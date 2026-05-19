@@ -13,6 +13,6 @@ class GarchiAttribute {
     public function __construct(array $data) {
         $this->key = $data['key'] ?? '';
         $this->value = $data['value'] ?? '';
-        $this->type = $data['type'] ?? null;
+        $this->type = $data['type'] ?? '';
     }
 }

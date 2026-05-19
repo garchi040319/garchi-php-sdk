@@ -12,6 +12,7 @@ class GarchiSection {
     /** @var GarchiSection[] */
     public array $children;
     public int $order;
+    public ?string $agent_description;
 
     public function __construct(array $data) {
         $this->id = $data['id'] ?? '';
@@ -20,5 +21,6 @@ class GarchiSection {
         $this->props = $data['props'] ?? [];
         $this->children = array_map(fn($section) => new GarchiSection($section), $data['children'] ?? []);
         $this->order = $data['order'] ?? 0;
+        $this->agent_description = $data['agent_description'] ?? '';
     }
 }

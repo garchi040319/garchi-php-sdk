@@ -10,6 +10,7 @@ class GarchiAsset {
     public string $path;
     public string $size;
     public string $type;
+    public ?string $agent_description;
 
     /**
      * GarchiAsset constructor.
@@ -21,5 +22,6 @@ class GarchiAsset {
         $this->path = $data['path'] ?? '';
         $this->size = $data['size'] ?? '';
         $this->type = $data['type'] ?? '';
+        $this->agent_description = $data['agent_description'] ?? '';
     }
 }

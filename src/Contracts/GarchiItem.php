@@ -40,6 +40,7 @@ class GarchiItem {
     public array $reactions;
     public ?string $created;
     public ?string $updated;
+    public ?string $agent_description;
 
     public function __construct(array $data) {
         $this->item_id = $data['item_id'] ?? 0;
@@ -67,5 +68,6 @@ class GarchiItem {
         $this->reactions = isset($data['reactions']) ? array_map(fn($reaction) => new GarchiReaction($reaction), $data['reactions']) : [];
         $this->created = $data['created'] ?? null;
         $this->updated = $data['updated'] ?? null;
+        $this->agent_description = $data['agent_description'] ?? '';
     }
 }
