@@ -16,6 +16,8 @@ class GarchiPage {
     /** @var GarchiSection[] */
     public array $sections;
 
+    public ?string $json_ld;
+
     public function __construct(array $data) {
         $this->id = $data['id'] ?? '';
         $this->title = $data['title'] ?? '';
@@ -24,5 +26,6 @@ class GarchiPage {
         $this->image = $data['image'] ?? '';
         $this->sections = array_map(fn($section) => new GarchiSection($section), $data['sections'] ?? []);
         $this->agent_description = $data['agent_description'] ?? '';
+        $this->json_ld = $data['json_ld'] ?? null;
     }
 }
