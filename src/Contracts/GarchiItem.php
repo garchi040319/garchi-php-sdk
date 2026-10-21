@@ -15,6 +15,12 @@ use GarchiCMS\Contracts\GarchiReaction;
 class GarchiItem {
     public int $item_id;
     public string $slug;
+    /** The item this item is inside, or null when it is on its own. */
+    public ?int $parent_id;
+    /** How many published items are inside this item. */
+    public int $children_count;
+    /** @var GarchiItem[] The published items inside, in order; only with 'children' => 'include'. */
+    public array $children;
     public ?string $sku;
     public string $name;
     public ?int $stock;
@@ -45,6 +51,9 @@ class GarchiItem {
     public function __construct(array $data) {
         $this->item_id = $data['item_id'] ?? 0;
         $this->slug = $data['slug'] ?? '';
+        $this->parent_id = isset($data['parent_id']) ? (int) $data['parent_id'] : null;
+        $this->children_count = (int) ($data['children_count'] ?? 0);
+        $this->children = isset($data['children']) ? array_map(fn($child) => new GarchiItem($child), $data['children']) : [];
         $this->sku = $data['sku'] ?? null;
         $this->name = $data['name'] ?? '';
         $this->stock = $data['stock'] ?? null;

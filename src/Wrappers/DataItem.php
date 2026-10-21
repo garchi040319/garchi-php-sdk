@@ -92,4 +92,29 @@ class DataItem {
         ]);
         return new GarchiItemAPIResponse($response);
     }
+
+    /**
+     * Query the published items of a space with conditions on their fields and
+     * metadata, including nested JSON values: ['uid' => ..., 'where' => ...,
+     * 'sort' => [...], 'page' => 1, 'size' => 10, 'children' => 'include'].
+     */
+    public function query(array $params): GarchiItemAPIResponse {
+        $uid = $params['uid'];
+        unset($params['uid']);
+        $response = $this->client->request('POST', "/space/{$uid}/items/query", ['json' => (object) $params]);
+        return new GarchiItemAPIResponse($response);
+    }
+
+    /**
+     * The published items inside an item (variants of a product, lessons of a
+     * course), in their order: ['uid' => ..., 'item' => id or slug, 'page' => 1,
+     * 'size' => 10, 'children' => 'include'].
+     */
+    public function getChildren(array $params): GarchiItemAPIResponse {
+        $uid = $params['uid'];
+        $item = rawurlencode((string) $params['item']);
+        unset($params['uid'], $params['item']);
+        $response = $this->client->request('GET', "/space/{$uid}/items/{$item}/children", ['query' => $params]);
+        return new GarchiItemAPIResponse($response);
+    }
 }
